@@ -155,11 +155,25 @@
           .append("path")
           .datum(d3.zip(years, stations_total))
           .attr("fill", "none")
+          .attr("id", "path")
           .attr("stroke", "#472c7a")
           .attr("stroke-linejoin", "round")
           .attr("stroke-linecap", "round")
           .attr("stroke-width", 4)
           .attr("d", line);
+
+      g.append("g")
+        .append("text")
+          .attr("transform", "translate(-2,-2)")
+          .append("textPath")
+            .attr("xlink:href", "#path")
+            .attr("startOffset", "98%")
+            .attr("fill", "#440154")
+            .attr("text-anchor", "end")
+            .attr("stroke", "white")
+            .attr("font-size", "24px")
+            .attr("font-weight", "bold")
+            .text("stations count");
 
       g.selectAll(".stations-count")
         .data(stations_data)
@@ -181,8 +195,6 @@
         .attr("fill", "#440154")
         .attr("stroke", "white")
         .attr("r", "4");
-
-
 
       g.append("g")
         .attr("transform", "translate(0," + height + ")")
